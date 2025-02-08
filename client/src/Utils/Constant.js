@@ -2,7 +2,7 @@ export const buildUsingData = [
     {
       name: "React.js",
       image: "/images/react.png",
-      size: "size-10",
+      size: "size-5 md:size-10",
       alt: "react-js",
     },
     {
@@ -37,7 +37,7 @@ export const companyLogos = [
     { id: 8, name: "CompanyLogo-4", src: "/images/CompanyLogo-8.png" },
     { id: 9, name: "CompanyLogo-4", src: "/images/CompanyLogo-9.png" },
   ];
-  export const footerLinks = [
+export const footerLinks = [
     {
       title: "Components",
       links: [
@@ -63,3 +63,19 @@ export const companyLogos = [
       ],
     },
   ];
+
+
+export const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/" },
+  { name: "Zelthy", path: "/" },
+  { name: "Github", path: "/" },
+];
+
+export const featureData = [
+  "View available slots of others, create, update, or delete your availability effortlessly.",
+  "Change your timezone to ensure accurate scheduling across different regions.",
+  "Quickly copy availability for specific days to streamline scheduling.",
+  "Easily navigate your profile and view available slots in a clean, user-friendly interface.",
+  "Enjoy a smooth experience across mobile and desktop devices with an accessible UI.",
+];
