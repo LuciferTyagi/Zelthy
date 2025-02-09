@@ -72,6 +72,12 @@ export const navLinks = [
   { name: "Github", path: "/" },
 ];
 
+export const slotPageNavLinks = [
+  { name: "Profile", path: "/" },
+  { name: "Availability", path: "/" },
+  { name: "All Users", path: "/" },
+  
+];
 export const featureData = [
   "View available slots of others, create, update, or delete your availability effortlessly.",
   "Change your timezone to ensure accurate scheduling across different regions.",

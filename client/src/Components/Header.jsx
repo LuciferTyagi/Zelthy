@@ -1,31 +1,42 @@
 import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
-import { navLinks } from '../Utils/Constant';
-
-const Header = () => {
+import { navLinks, slotPageNavLinks } from '../Utils/Constant';
+import { useNavigate } from "react-router-dom";
+const Header = ({ setActiveTab }) => {
+const navigate = useNavigate();
 const[showMobileMenu , setShowMobileMenu] = useState(false);
 const location = useLocation();
 const isSignUpPage = location.pathname === "/sign-up";
+const isSlotPage = location.pathname === "/slot";
 const buttonText = isSignUpPage ? "Log In" : "My Account";
-const buttonPath = isSignUpPage ? "/login" : "/sign-up";
-console.log(location)
+const buttonPath = isSignUpPage ? "/log-in" : "/sign-up";
+const linksToUse = isSlotPage ? slotPageNavLinks : navLinks;
+const handleLogout = () => {
+  localStorage.removeItem("token");
+  navigate("/log-in");
+};
+
+
   return (
     <header className=' w-full bg-red-600 pt-10'>
             
              <nav style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className='Desktop hidden w-full mx-auto max-w-[1440px] bg-white rounded-lg lg:flex justify-between items-center p-4'>
                   <a href='/'><img src='/images/zelthy.png' alt='company-logo' className='w-12'/></a>
-                  {!isSignUpPage && (
-
-                  
+                  {!isSignUpPage && ( 
                   <ul className='flex gap-5 text-[#0B3558] text-base font-semibold'>
-                      {navLinks.map((link) => (
-                        <li key={link.name}> <a href={link.path}>{link.name}</a></li>
+                      {linksToUse.map((link) => (
+                        <li onClick={() => setActiveTab(link.name)} key={link.name}> <a href={link.path}>{link.name}</a></li>
                       ))}
                   </ul>
                   )}
                   <div className='flex items-center gap-5'>
-                  <button><img src='/images/dark-mode.png' alt='dark-mode' className='size-5'/></button>
-                  <button className='bg-[#006BFF] text-white font-semibold rounded-lg py-2.5 px-4'><a href={buttonPath}>{buttonText}</a></button>
+                  <button onClick={handleLogout}><img src='/images/dark-mode.png' alt='dark-mode' className='size-5'/></button>
+                  {isSlotPage ? (
+                    <div className='size-10 rounded-full bg-red-500'></div>
+                  ) : (
+                    <button className='bg-[#006BFF] text-white font-semibold rounded-lg py-2.5 px-4'><a href={buttonPath}>{buttonText}</a></button>
+
+                  )}
                   </div>
              </nav>
 

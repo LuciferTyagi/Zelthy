@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from './Header'
 import { featureData } from '../Utils/Constant'
-
+import AuthCard from './AuthCard'
 const SignUp = () => {
+
   return (
     <section className='bg--300 w-full  font-[inter]'>
           <Header/>
-          <div className='bg-[#F8F9FB] py-20'>
-          <div className='w-full max-w-[1440px] bg--300 mx-auto h-full grid grid-cols-2 gap-32'>
-                <div style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className='bg-white rounded-lg p-8 flex flex-col gap-5 text-center'>
+          <div className='bg-[#F8F9FB] '>
+          <div className='w-full max-w-[1440px] bg--300 mx-auto h-full grid grid-cols-2 gap-32 py-20'>
+                {/* <div style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className='bg-white rounded-lg p-8 flex flex-col gap-5 text-center'>
                       <h1 className='text-5xl text-[#0B3558] font-bold leading-snug'>Sign up for your <br></br>Zelthy Slot account</h1>
                       <p className='text-[#476788] text-lg font-medium'>Always free! No credit card required.</p>
                       <form className='flex flex-col gap-5'>
@@ -23,7 +24,8 @@ const SignUp = () => {
 
                       </div>
                       <p className='text-[#476788]'>Welcome back! Just <a href='/log-in' className='text-[#006BFF] font-medium'>log in</a> and pick up where you left off.</p>
-                </div>
+                </div> */}
+                <AuthCard title="Sign up for your Zelthy Slot account"subtitle="Always free! No credit card required."buttonText="Sign up"redirectText="Welcome back!"redirectLink="Log in"redirectHref="/log-in" isLogin={false}/>
 
                 <div className='bg--600 rounded-lg flex flex-col gap-5'>
                       <h1 className='text-4xl text-[#0B3558] font-bold'>Create your free account</h1>
