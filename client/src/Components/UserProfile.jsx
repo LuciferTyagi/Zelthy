@@ -13,7 +13,7 @@ const UserProfile = () => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        const decoded = jwtDecode(token); // Decode token
+        const decoded = jwtDecode(token); 
         console.log(decoded)
         setUsername(decoded.username); 
         dispatch(setUser(decoded.username));

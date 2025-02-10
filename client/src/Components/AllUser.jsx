@@ -26,17 +26,17 @@ const AllUser = () => {
 
   return (
     <div className="bg--200">
-      <h1 className="text-5xl font-bold text-blue-500">Meet Our Community</h1>
-      <p className="text-lg text-zinc-500 font-medium mt-2">Browse and see the availability of other users.</p>
+      <h1 className="text-3xl md:text-5xl font-bold text-blue-500">Meet Our Community</h1>
+      <p className=" text-sm md:text-lg text-zinc-500 font-medium mt-0.5 md:mt-2">Browse and see the availability of other users.</p>
       
-      <div style={{boxShadow:" rgba(0, 0, 0, 0.24) 0px 3px 8px"}} className="rounded-lg py-20 px-10 bg-white grid grid-cols-[200px_minmax(0,1fr)] mt-6">
-            <div className="User-Profiles flex flex-col">
-            <ul>
+      <div style={{boxShadow:" rgba(0, 0, 0, 0.24) 0px 3px 8px"}} className="rounded-lg py-20 px-5 md:px-10 bg-white flex flex-col gap-10  mt-6">
+            <div className="User-Profiles ">
+            <ul className="flex flex-wrap gap-4  justify-evenly">
                {users.length > 0 ? (
                 users.map((user) => (
-                   <li key={user._id} className=" mb-4 cursor-pointer text-zinc-400 hover:text-zinc-700 font-medium  flex items-center gap-3" onClick={() => fetchAvailability(user._id, user.username)}>
-                     <div className="w-10 h-10 bg-red-400 rounded-full"></div>
-                      {user.username}
+                   <li key={user._id} className=" mb-4 cursor-pointer text-zinc-400 hover:text-zinc-700 font-medium  flex flex-col items-center gap-3" onClick={() => fetchAvailability(user._id, user.username)}>
+                     <div className="size-16 bg-red-400 rounded-full"></div>
+                      <p className="capitalize">{user.username}</p>
                    </li>
                  ))
                ) : (
@@ -47,18 +47,21 @@ const AllUser = () => {
 
             <div className="User-Availablity">
             {availability && (
-            <div className=" p-4 border rounded-lg shadow-md">
-             <h3 className="text-xl font-semibold text-zinc-800">Availability for <span className="text-blue-500">{selectedUser}</span></h3>
-             <ul className="mt-2">
+            <div className="relative p-2 md:p-4 border rounded-lg shadow-md">
+             <h3 className="text-base md:text-xl font-semibold text-zinc-800">Availability for <span className="text-blue-500">{selectedUser}</span></h3>
+             
+             <div className="h-[1px] w-full bg-black/20 my-2"/>
+             <ul className="">
             {Object.entries(availability).map(([day, details]) => (
               <li key={day} className=" bg--400 flex items-center mb-4 ">
-                <p className="capitalize text-[#476788] font-semibold w-32 bg--400  ">{day}</p>
-                {details.isAvailable
+                <p className="capitalize text-blue-500 font-semibold w-24 md:w-32  text-sm md:text-base ">{day}</p>
+                <p className="text-sm md:text-base text-zinc-500">{details.isAvailable
                   ? `${details.startTime} - ${details.endTime}`
-                  : "Not Available"}
+                  : "Unavailable"}</p>
               </li>
             ))}
-          </ul>
+             </ul>
+             <div className="absolute size-20 bg-red-400 rounded-full top-1/3 right-4"/>
         </div>
       )}
             </div>

@@ -12,11 +12,11 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.username = action.payload;
     },
-    setAvailability: (state, action) => {
+    setReduxAvailability: (state, action) => {
       state.availability = action.payload;
     },
   },
 });
 
-export const { setUser, setAvailability } = userSlice.actions;
+export const { setUser, setReduxAvailability } = userSlice.actions;
 export default userSlice.reducer;

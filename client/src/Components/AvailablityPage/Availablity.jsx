@@ -3,13 +3,14 @@ import axios from "axios";
 import { defaultAvailability, timeSlots } from "./Constant.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-
+import { useDispatch } from "react-redux";
+import { setReduxAvailability } from "../../Redux/Slices/UserSlice.js";
 const daysOfWeek = Object.keys(defaultAvailability);
 
 const Availablity = () => {
   const [availability, setAvailability] = useState(defaultAvailability);
   const [copyMenu, setCopyMenu] = useState({ isOpen: false, day: "", selectedDays: [] });
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchAvailability = async () => {
@@ -17,8 +18,9 @@ const Availablity = () => {
         const response = await axios.get("http://localhost:8000/api/availability/myAvailability", {
           headers: { Authorization: localStorage.getItem("token") },
         });
-
-        setAvailability(response.data.availability || defaultAvailability);
+        const fetchedAvailability = response.data.availability || defaultAvailability;
+        setAvailability(fetchedAvailability);
+        dispatch(setReduxAvailability(fetchedAvailability));
       } catch (error) {
         console.error("Error fetching availability", error);
       }
@@ -99,18 +101,18 @@ const Availablity = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-5xl font-bold text-blue-500">Availability</h1>
-      <p className="text-lg text-zinc-500 font-medium mt-2">Set your available time slots for booking</p>
-      <div style={{boxShadow:" rgba(0, 0, 0, 0.24) 0px 3px 8px"}} className="flex flex-col gap-4 mt-6 rounded-lg p-10">
+    <div className="bg-green-300 w-full">
+      <h1 className = "text-3xl md:text-5xl font-bold text-blue-500 ">Availability</h1>
+      <p  className = "text-sm md:text-lg text-zinc-500 font-medium mt-0.5 md:mt-2">Set your available time slots for booking</p>
+      <div style={{boxShadow:" rgba(0, 0, 0, 0.24) 0px 3px 8px"}} className="flex flex-col gap-4 mt-6 rounded-md md:rounded-lg p-3 md:p-6 lg:p-10 bg-yellow-100">
         {daysOfWeek.map((day) => (
-          <div key={day} className="flex items-center gap-4 bg--300 h-10">
-            <p className="text-base text-[#476788] font-medium w-32">{day.charAt(0).toUpperCase() + day.slice(1)}</p>
+          <div key={day} className="flex flex-wrap items-center gap-4 bg-red-300 ">
+            <p className="text-sm md:text-base text-[#476788] font-medium w-20 md:w-24 bg-pink-300 capitalize">{day}</p>
             {availability[day].isAvailable ? (
               <>
                 <select
                   style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-                  className="bg-neutral-100 rounded-md h-full px-2 text-base text-[#476788]  outline-none"
+                  className="bg-neutral-100 rounded   p-1 text-sm  md:p-2   text-[#476788]  outline-none "
                   value={availability[day].startTime}
                   onChange={(e) => handleTimeChange(day, "startTime", e.target.value)}
                 >
@@ -125,7 +127,7 @@ const Availablity = () => {
 
                 <select
                   style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-                  className="bg-neutral-100 rounded-md h-full px-2 text-base text-[#476788]  outline-none"
+                  className="bg-neutral-100 rounded   p-1 text-sm md:p-2 text-[#476788]  outline-none"
                   value={availability[day].endTime}
                   onChange={(e) => handleTimeChange(day, "endTime", e.target.value)}
                 >
@@ -136,8 +138,8 @@ const Availablity = () => {
                   ))}
                 </select>
 
-                <img src="/images/close.png" alt="close" className="size-3 mx-4 cursor-pointer" onClick={() => handleToggleAvailability(day)} />
-                <img onClick={() => handleCopyClick(day)} src="/images/copy.png" alt="copy" className="size-4 cursor-pointer"/>
+                <img src="/images/close.png" alt="close" className="size-2 md:size-3 md:mx-2 cursor-pointer" onClick={() => handleToggleAvailability(day)} />
+                <img onClick={() => handleCopyClick(day)} src="/images/copy.png" alt="copy" className="size-3 md:size-4 cursor-pointer"/>
               </>
             ) : (
               <>
@@ -148,7 +150,7 @@ const Availablity = () => {
             )}
           </div>
         ))}
-        <div className="flex gap-3 items-center justify-center w-fit text-sm text-blue-500">
+        <div className="flex gap-3 items-center justify-center w-fit text-xs lg:text-sm text-blue-500">
               <p className="">Indian Standard Time</p>
               <FontAwesomeIcon icon={faAngleDown} className=""/>
         </div>  
@@ -187,7 +189,7 @@ const Availablity = () => {
         </div>
       )}
 
-      <button onClick={updateAvailabilityInBackend} className="mt-5 bg-[#006BFF] text-white px-6 py-3 rounded-lg font-semibold" >
+      <button onClick={updateAvailabilityInBackend} className="mt-5 bg-[#006BFF] text-white px-4 lg:px-6 py-3 rounded-lg font-semibold" >
         Save Changes
       </button>
     </div>

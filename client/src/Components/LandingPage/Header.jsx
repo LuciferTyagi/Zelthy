@@ -1,50 +1,41 @@
 import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
-import { navLinks, slotPageNavLinks } from '../Utils/Constant';
-import { useNavigate } from "react-router-dom";
+import { navLinks, slotPageNavLinks } from '../../Utils/Constant';
+import ThemeToggle from '../ThemeToggle';
 const Header = ({ setActiveTab }) => {
-const navigate = useNavigate();
 const[showMobileMenu , setShowMobileMenu] = useState(false);
 const location = useLocation();
 const isSignUpPage = location.pathname === "/sign-up";
-const isSlotPage = location.pathname === "/slot";
 const buttonText = isSignUpPage ? "Log In" : "My Account";
 const buttonPath = isSignUpPage ? "/log-in" : "/sign-up";
-const linksToUse = isSlotPage ? slotPageNavLinks : navLinks;
-const handleLogout = () => {
-  localStorage.removeItem("token");
-  navigate("/log-in");
-};
+
 
 
   return (
-    <header className=' w-full bg-red-600 pt-10'>
+    <header className=' w-full bg-white dark:bg-black border-b-[1px] dark:border-white/10 border-black/10 '>
             
-             <nav style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className='Desktop hidden w-full mx-auto max-w-[1440px] bg-white rounded-lg lg:flex justify-between items-center p-4'>
+             <nav  className='Desktop hidden w-full mx-auto max-w-[1440px] bg-white dark:bg-black rounded-lg lg:flex justify-between items-center py-4'>
                   <a href='/'><img src='/images/zelthy.png' alt='company-logo' className='w-12'/></a>
                   {!isSignUpPage && ( 
-                  <ul className='flex gap-5 text-[#0B3558] text-base font-semibold'>
-                      {linksToUse.map((link) => (
+                  <ul className='flex gap-5 text-zinc-800 dark:text-white text-base font-semibold'>
+                      {navLinks.map((link) => (
                         <li onClick={() => setActiveTab(link.name)} key={link.name}> <a href={link.path}>{link.name}</a></li>
                       ))}
                   </ul>
                   )}
                   <div className='flex items-center gap-5'>
-                  <button onClick={handleLogout}><img src='/images/dark-mode.png' alt='dark-mode' className='size-5'/></button>
-                  {isSlotPage ? (
-                    <div className='size-10 rounded-full bg-red-500'></div>
-                  ) : (
-                    <button className='bg-[#006BFF] text-white font-semibold rounded-lg py-2.5 px-4'><a href={buttonPath}>{buttonText}</a></button>
+                    <ThemeToggle/>
+                 
+                    <button className='bg-[#006BFF] dark:bg-white text-white dark:text-black font-semibold rounded-lg py-2.5 px-4'><a href={buttonPath}>{buttonText}</a></button>
 
-                  )}
                   </div>
              </nav>
 
-             <nav style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className=' Mobile lg:hidden w-full mx-auto max-w-[1440px] bg-white rounded-lg flex justify-between items-center p-4'>
+             <nav  className=' Mobile lg:hidden w-full mx-auto max-w-[1440px] bg-white dark:bg-black rounded-lg flex justify-between items-center p-4'>
                   <a href='/'><img src='/images/zelthy.png' alt='company-logo' className='w-12'/></a>
                 
                   <div className='flex items-center gap-5'>
-                  <button className='bg-[#006BFF] text-white font-semibold rounded-lg py-2.5 px-4 text-sm'><a href={buttonPath}>{buttonText}</a></button>
+                  <button className='bg-[#006BFF] dark:bg-black dark:text-black text-white font-semibold rounded-lg py-2.5 px-4 text-sm'><a href={buttonPath}>{buttonText}</a></button>
                   <button onClick={() => setShowMobileMenu(true)}><img src='/images/menu.png' alt='menu' className='size-6'/></button>
                   </div>
                   {showMobileMenu && (

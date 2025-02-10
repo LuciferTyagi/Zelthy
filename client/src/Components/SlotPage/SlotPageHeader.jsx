@@ -17,8 +17,8 @@ const handleLogout = () => {
   };
   return (
     <header style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className='bg--400 w-full font-[inter]'>
-            <nav className='Desktop relative hidden w-full mx-auto max-w-[1440px] bg-white rounded-lg lg:flex justify-between items-center py-4'>
-            <a href='/' className='flex items-center gap-3 text-lg font-semibold text-zinc-500'><img src='/images/zelthy.png' alt='company-logo' className='w-12'/>Zelthy Slot</a>
+            <nav className='relative  w-full mx-auto max-w-[1440px] bg-white rounded-lg flex justify-between items-center py-4 px-2'>
+            <a href='/slot' className='flex items-center gap-3 text-lg font-semibold text-zinc-500'><img src='/images/zelthy.png' alt='company-logo' className='w-12'/>Zelthy Slot</a>
             <div className='flex gap-4'>
             <button ><img src='/images/dark-mode.png' alt='dark-mode' className='size-5'/></button>
             <div onClick={() => setshowAccountMenu(!showAccountMenu)} className='size-10 rounded-full bg-red-500 cursor-pointer'></div>
