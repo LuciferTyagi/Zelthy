@@ -1,3 +1,4 @@
+
 export const buildUsingData = [
     {
       name: "React.js",
@@ -72,11 +73,21 @@ export const navLinks = [
   { name: "Github", path: "/" },
 ];
 
+import { faUser, faClock, faUsers ,faDollarSign ,faChartSimple ,faCrown , faCircleQuestion ,faStar ,faArrowRightFromBracket  } from "@fortawesome/free-solid-svg-icons";
+
 export const slotPageNavLinks = [
-  { name: "Profile", path: "/" },
-  { name: "Availability", path: "/" },
-  { name: "All Users", path: "/" },
-  
+  { name: "Profile", icon: faUser },
+  { name: "Availability", icon: faClock },
+  { name: "All Users", icon: faUsers },
+  { name: "Upgrade Plan", icon: faDollarSign },
+  { name: "Analytics", icon: faChartSimple },
+  { name: "Admin center", icon: faCrown },
+  { name: "Help", icon: faCircleQuestion },
+];
+export const accountSettingsLinks = [
+  { name: "Profile", icon: faUser },
+  { name: "Branding", icon: faStar },
+  { name: "Help", icon: faCircleQuestion },
 ];
 export const featureData = [
   "View available slots of others, create, update, or delete your availability effortlessly.",

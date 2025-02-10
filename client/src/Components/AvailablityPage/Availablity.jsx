@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { defaultAvailability, timeSlots } from "./Constant.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const daysOfWeek = Object.keys(defaultAvailability);
 
@@ -98,16 +100,17 @@ const Availablity = () => {
 
   return (
     <div>
-      <h1 className="text-5xl font-bold text-[#0A2540]">Availability</h1>
-      <div className="flex flex-col gap-4 mt-10">
+      <h1 className="text-5xl font-bold text-blue-500">Availability</h1>
+      <p className="text-lg text-zinc-500 font-medium mt-2">Set your available time slots for booking</p>
+      <div style={{boxShadow:" rgba(0, 0, 0, 0.24) 0px 3px 8px"}} className="flex flex-col gap-4 mt-6 rounded-lg p-10">
         {daysOfWeek.map((day) => (
-          <div key={day} className="flex items-center gap-4 ">
-            <p className="text-lg text-[#476788] font-medium w-32">{day}</p>
+          <div key={day} className="flex items-center gap-4 bg--300 h-10">
+            <p className="text-base text-[#476788] font-medium w-32">{day.charAt(0).toUpperCase() + day.slice(1)}</p>
             {availability[day].isAvailable ? (
               <>
                 <select
                   style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-                  className="bg-neutral-100 rounded-lg p-3 text-lg text-[#476788] font-medium outline-none"
+                  className="bg-neutral-100 rounded-md h-full px-2 text-base text-[#476788]  outline-none"
                   value={availability[day].startTime}
                   onChange={(e) => handleTimeChange(day, "startTime", e.target.value)}
                 >
@@ -122,7 +125,7 @@ const Availablity = () => {
 
                 <select
                   style={{ boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px" }}
-                  className="bg-neutral-100 rounded-lg p-3 text-lg text-[#476788] font-medium outline-none"
+                  className="bg-neutral-100 rounded-md h-full px-2 text-base text-[#476788]  outline-none"
                   value={availability[day].endTime}
                   onChange={(e) => handleTimeChange(day, "endTime", e.target.value)}
                 >
@@ -133,35 +136,24 @@ const Availablity = () => {
                   ))}
                 </select>
 
-                <img
-                  src="/images/close.png"
-                  alt="close"
-                  className="size-4 mx-4 cursor-pointer"
-                  onClick={() => handleToggleAvailability(day)}
-                />
-                <img
-                  onClick={() => handleCopyClick(day)}
-                  src="/images/copy.png"
-                  alt="copy"
-                  className="size-4 cursor-pointer"
-                />
+                <img src="/images/close.png" alt="close" className="size-3 mx-4 cursor-pointer" onClick={() => handleToggleAvailability(day)} />
+                <img onClick={() => handleCopyClick(day)} src="/images/copy.png" alt="copy" className="size-4 cursor-pointer"/>
               </>
             ) : (
               <>
-                <p className="text-lg text-red-500 font-medium">Unavailable</p>
-                <img
-                  src="/images/plus.png"
-                  alt="plus"
-                  className="size-5 cursor-pointer"
-                  onClick={() => handleToggleAvailability(day)}
+                <p className="text-sm text-zinc-300 ">Unavailable</p>
+                <img src="/images/plus.png" alt="plus" className="size-3 cursor-pointer" onClick={() => handleToggleAvailability(day)}
                 />
               </>
             )}
           </div>
         ))}
+        <div className="flex gap-3 items-center justify-center w-fit text-sm text-blue-500">
+              <p className="">Indian Standard Time</p>
+              <FontAwesomeIcon icon={faAngleDown} className=""/>
+        </div>  
       </div>
 
-      {/* Copy Menu */}
       {copyMenu.isOpen && (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
           <div className="bg-white p-6 rounded-lg shadow-lg">
@@ -195,11 +187,7 @@ const Availablity = () => {
         </div>
       )}
 
-      {/* Save Button */}
-      <button
-        onClick={updateAvailabilityInBackend}
-        className="mt-5 bg-green-500 text-white px-6 py-3 rounded-lg"
-      >
+      <button onClick={updateAvailabilityInBackend} className="mt-5 bg-[#006BFF] text-white px-6 py-3 rounded-lg font-semibold" >
         Save Changes
       </button>
     </div>
