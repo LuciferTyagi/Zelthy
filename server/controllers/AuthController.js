@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const Availability = require("../models/Availability");
 
 const registerUser = async (req, res) => {
     const { username, email } = req.body;
@@ -7,7 +8,7 @@ const registerUser = async (req, res) => {
     if (!username || !email) {
         return res.status(400).json({ message: "Username and email are required" });
     }
-
+    
     try {
         const userExists = await User.findOne({ username });
 
@@ -17,8 +18,22 @@ const registerUser = async (req, res) => {
 
         const newUser = new User({ username, email });
         await newUser.save();
+        console.log(newUser._id)
+        const defaultAvailability = {
+            userId: newUser._id,
+            availability: {
+                monday: { isAvailable: false, startTime: "09:00", endTime: "17:00" },
+                tuesday: { isAvailable: false, startTime: "09:00", endTime: "17:00" },
+                wednesday: { isAvailable: false, startTime: "09:00", endTime: "17:00" },
+                thursday: { isAvailable: false, startTime: "09:00", endTime: "17:00" },
+                friday: { isAvailable: false, startTime: "09:00", endTime: "14:00" },
+                saturday: { isAvailable: false, startTime: "09:00", endTime: "18:00" },
+                sunday: { isAvailable: false, startTime: "09:00", endTime: "20:00" }
+            }
+        };
+        const newAvailability = new Availability(defaultAvailability);
+        await newAvailability.save(); 
 
-        
         const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
         res.status(201).json({ message: "User registered successfully", token });

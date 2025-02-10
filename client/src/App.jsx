@@ -2,7 +2,7 @@ import {  Route, Routes } from "react-router-dom";
 import Home from "./Components/Home"
 import SignUp from "./Components/SignUp"
 import LogIn from "./Components/LogIn";
-import SlotPage from "./Components/SlotPage";
+import SlotPage from "./Components/SlotPage/SlotPage";
 import ProtectedRoute from "./Components/ProtectedRoute";
 
 function App() {
