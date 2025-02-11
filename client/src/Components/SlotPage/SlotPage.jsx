@@ -1,5 +1,5 @@
 import React, { useState , useEffect } from 'react'
-import Dashboard from '../Dashboard'
+import Dashboard from './Dashboard'
 import AllUser from '../AllUser'
 import Availablity from '../AvailablityPage/Availablity'
 import SlotPageHeader from './SlotPageHeader';
@@ -16,10 +16,10 @@ const dispatch = useDispatch();
         dispatch(fetchAvailability())
     }, [dispatch]);
 const components = {
-  "Dashboard": <Dashboard />,
+  "Dashboard": <Dashboard setTabSelected={setTabSelected}/>,
   "All Users": <AllUser />,
   "Edit Profile": <EditProfile />,
-  "Availability": <Availablity/>,
+  "Availability": <Availablity setTabSelected={setTabSelected}/>,
   "Documentation": <Documentation/>
 }
   return (
@@ -29,7 +29,7 @@ const components = {
                  <div className='w-full max-w-[1440px] mx-auto bg--300 h-full lg:grid lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-20 py-5 lg:py-10'>
                 <SlotPageSidebar tabSelected={tabSelected} setTabSelected ={setTabSelected}/>
 
-                <main className='bg-red-300 px-2 lg:px-0'>
+                <main className='bg--300 px-2 lg:px-0'>
                 {components[tabSelected] || null}
                 </main>
                  </div>
