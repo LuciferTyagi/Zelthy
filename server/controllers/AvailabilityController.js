@@ -9,7 +9,7 @@ const getAvailability = async (req, res) => {
         return res.status(404).json({ error: "Availability not found" });
       }
   
-      res.status(200).json({ availability: availability.availability });
+      res.status(200).json({ availability: availability.availability, timezone: availability.timezone });
     } catch (error) {
       res.status(500).json({ error: "Server error while fetching availability" });
     }
@@ -18,11 +18,11 @@ const getAvailability = async (req, res) => {
   const updateAvailability = async (req, res) => {
     try {
       const userId = req.user.id;
-      const { availability } = req.body;
+      const { availability , timezone  } = req.body;
   
       const updatedAvailability = await Availability.findOneAndUpdate(
         { userId },
-        { availability },
+        { availability , timezone  },
         { new: true }
       );
   
@@ -30,7 +30,7 @@ const getAvailability = async (req, res) => {
         return res.status(404).json({ error: "Availability not found" });
       }
   
-      res.status(200).json({ message: "Availability updated successfully", availability: updatedAvailability.availability });
+      res.status(200).json({ message: "Availability updated successfully", availability: updatedAvailability.availability , timezone: updatedAvailability.timezone });
     } catch (error) {
       res.status(500).json({ error: "Server error while updating availability" });
     }
@@ -45,7 +45,7 @@ const getAvailability = async (req, res) => {
         return res.status(404).json({ error: "User's availability not found" });
       }
   
-      res.status(200).json({ availability: availability.availability });
+      res.status(200).json({ availability: availability.availability , timezone: availability.timezone  });
     } catch (error) {
       res.status(500).json({ error: "Server error while fetching user's availability" });
     }

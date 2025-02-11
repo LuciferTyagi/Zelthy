@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const availabilitySchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  timezone: { type: String, required: true, default: "Asia/Kolkata" },
   availability: {
     monday: { isAvailable: Boolean, startTime: String, endTime: String },
     tuesday: { isAvailable: Boolean, startTime: String, endTime: String },

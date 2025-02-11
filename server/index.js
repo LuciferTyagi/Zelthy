@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 const bodyParser = require('body-parser')
-const mongoose = require("mongoose")
+
 const cors = require("cors")
 const AuthRouter = require('./routes/AuthRouter')
 const AvailabilityRouter = require('./routes/AvailabilityRoutes')
@@ -17,8 +17,7 @@ app.get('/ping',(req,res) =>{
 
 app.use(bodyParser.json());
 app.use(cors());
-
-
+app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', AuthRouter);
 app.use("/api/availability", AvailabilityRouter);
 app.use("/api/user", UserRouter);

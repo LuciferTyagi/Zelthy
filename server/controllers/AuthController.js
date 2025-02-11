@@ -1,7 +1,12 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const moment = require('moment-timezone');
 const Availability = require("../models/Availability");
 
+const generateInitialAvatar = (name) => {
+    const initial = name.charAt(0).toUpperCase();
+    return `https://ui-avatars.com/api/?name=${initial}&background=random&color=fff&size=128`; 
+};
 const registerUser = async (req, res) => {
     const { username, email } = req.body;
 
@@ -15,12 +20,15 @@ const registerUser = async (req, res) => {
         if (userExists) {
             return res.status(400).json({ message: "Name already registered" });
         }
-
-        const newUser = new User({ username, email });
+        const userTimezone =  moment.tz.guess();
+        const profilePicture = generateInitialAvatar(username);
+        const newUser = new User({ username, email , profilePicture });
         await newUser.save();
-        console.log(newUser._id)
+
+        
         const defaultAvailability = {
             userId: newUser._id,
+            timezone: userTimezone,
             availability: {
                 monday: { isAvailable: false, startTime: "09:00", endTime: "17:00" },
                 tuesday: { isAvailable: false, startTime: "09:00", endTime: "17:00" },

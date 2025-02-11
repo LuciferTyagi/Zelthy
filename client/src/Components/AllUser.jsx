@@ -5,11 +5,16 @@ const AllUser = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [availability, setAvailability] = useState(null);
-
+  const [timeZone , setTimeZone] = useState("");
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/user/allusers") 
-      .then((response) => setUsers(response.data))
+      .get("http://localhost:8000/api/user/allusers")
+      .then((response) => {
+        setUsers((prevUsers) => {
+          // Prevent re-setting the same data (avoid unnecessary re-renders)
+          return JSON.stringify(prevUsers) === JSON.stringify(response.data) ? prevUsers : response.data;
+        });
+      })
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
@@ -20,7 +25,11 @@ const AllUser = () => {
     .get(`http://localhost:8000/api/availability/${userId}`, {
       headers: { Authorization: localStorage.getItem("token") },
     })
-    .then((response) => setAvailability(response.data.availability))
+    .then((response) => {
+      setAvailability(response.data.availability);
+      setTimeZone(response.data.timezone);
+      console.log(response)
+    })
     .catch((error) => console.error("Error fetching availability:", error));
   };
 
@@ -61,6 +70,7 @@ const AllUser = () => {
               </li>
             ))}
              </ul>
+             <p>{timeZone}</p>
              <div className="absolute size-20 bg-red-400 rounded-full top-1/3 right-4"/>
         </div>
       )}
