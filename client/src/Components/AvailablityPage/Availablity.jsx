@@ -78,7 +78,7 @@ const Availablity = () => {
   };
 
   return (
-    <div className="bg-green-300 w-full">
+    <div className="bg--300 w-full">
       <h1 className = "text-3xl md:text-5xl font-bold text-blue-500 ">Availability</h1>
       <p  className = "text-sm md:text-lg text-zinc-500 font-medium mt-0.5 md:mt-2">Set your available time slots for booking</p>
 

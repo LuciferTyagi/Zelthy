@@ -34,7 +34,7 @@ const[sideBar , setSideBar] = useState(false);
                     </div>
                  )}                
                 <aside style={{boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}  class="Desktop hidden z-30 rounded-lg  sticky top-0  h-full w-full   lg:block  bg-red-300  ">
-                    <nav className='h-full flex flex-col justify-between bg-white px-4 py-2 rounded-lg'>                  
+                    <nav className='h-full flex flex-col justify-between bg-white px-4 py-2 pb-6 rounded-lg'>                  
                         <ul className='flex flex-col gap-5 '>
                           <button onClick={() => setTabSelected("Availability")} className='flex items-center justify-center p-3 text-base gap-3 font-medium text-blue-500 border border-blue-500 hover:bg-blue-50 rounded-full'><FontAwesomeIcon icon={faPlus} className='bg--200'/>Create</button>
                           {slotPageNavLinks.slice(0).map((item) =>(

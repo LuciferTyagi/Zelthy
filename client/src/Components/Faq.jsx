@@ -6,8 +6,8 @@ import {motion , AnimatePresence} from 'framer-motion'
 const Faq = () => {
 const[activeQuestion , setActiveQuestion] = useState(null);
   return (
-    <div className='w-full  flex items-center justify-center bg-green-200 py-10'>
-         <div className='w-full mx-auto max-w-[1400px] bg-pink-300 p-8 rounded-lg shadow-lg'>
+    <div className='w-full  flex items-center justify-center bg--200 py-10'>
+         <div className='w-full mx-auto max-w-[1400px] bg--300 p-8 rounded-lg shadow-lg'>
                 <h2 className='text-3xl text-zinc-700 font-semibold'>FAQ</h2>
                 {faqData.map((q) =>(
                     <div key={q.id} className=' mb-4 last:mb-0'>

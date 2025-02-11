@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"
 const Footer = () => {
   return (
-    <footer className='w-full px-8 py-20 font-inter bg--300 border-t border-neutral-100/10 bg-white dark:bg-black'>
+    <footer className='w-full px-8 py-20 font-inter bg--300 border-t border-neutral-100/ bg-white dark:bg-black'>
             <div className='Footer-Parent max-w-[1400px] mx-auto flex flex-col gap-10 sm:flex-row md:justify-between md:gap-0'>
                   <div className='First-Child flex flex-col items-start gap-2 bg--300'>
                         <a href='/' className='Company-Name&Logo flex items-center justify-center gap-2'>

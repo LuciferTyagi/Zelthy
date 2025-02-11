@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { fetchUserProfile } from "../Redux/Slices/UserSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera } from "@fortawesome/free-solid-svg-icons";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -46,25 +48,25 @@ const EditProfile = () => {
       console.error("Error uploading profile picture", error);
     }
   };
+  const profileImageSrc = profilePicture.startsWith("http") ? profilePicture : `http://localhost:8000${profilePicture}`;
 
   return (
-    <div className="edit-profile-container">
-      <h2>Edit Profile</h2>
-
-      <div className="profile-picture">
-        {profilePicture ? (
-          <img 
-            src={profilePicture.startsWith("http") ? profilePicture : `http://localhost:8000${profilePicture}`} 
-            alt="Profile" 
-            width={100} 
-          />
-        ) : (
-          <div className="placeholder">{username ? username[0].toUpperCase() : "U"}</div>
-        )}
+    <div className="bg-red-300 w-full h-full">
+      <h2 className="text-5xl text-blue-500  font-bold">Edit Profile</h2>
+      <p className="text-lg text-zinc-500 font-medium mt-4">Customize your profile to reflect the best version of yourself—update details, add a profile picture, and make it truly yours!</p>
+      <div className="bg-green-300 w-full flex justify-center items-center py-20">
+            <div className="relative size-[275px] bg-[#066BFF] rounded-lg flex justify-center items-center">
+            <div className=" Image-container absolute rounded-full size-32 overflow-hidden bg-white bottom-[70%] left-1/2 transform -translate-x-1/2 border border-black/20">
+                  <img src={profileImageSrc} alt="user-image"className=""/>
+            </div>
+            <label className="absolute bg-white px-4 py-2 rounded-lg cursor-pointer shadow-md flex items-center gap-2 hover:bg-gray-200 transition">
+                  <FontAwesomeIcon icon={faCamera} className="text-blue-500"/>Upload Image
+                   <input type="file" accept="image/*" onChange={handleFileChange}  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"/>
+            </label>          
+             <button onClick={uploadProfilePicture} className="absolute bottom-10 border rounded-md p-2 text-white font-semibold border-white">Upload Profile Picture</button> 
+          </div>
       </div>
 
-      <input type="file" accept="image/*" onChange={handleFileChange} />
-      <button onClick={uploadProfilePicture}>Upload Profile Picture</button>
     </div>
 );
 

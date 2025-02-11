@@ -73,18 +73,18 @@ export const navLinks = [
   { name: "Github", path: "/" },
 ];
 
-import { faUser, faClock, faUsers ,faDollarSign ,faChartSimple ,faCrown , faCircleQuestion ,faStar ,faArrowRightFromBracket, faBook, faGaugeHigh  } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faClock, faUsers ,faDollarSign ,faChartSimple ,faCrown , faCircleQuestion ,faStar ,faArrowRightFromBracket, faBook, faGaugeHigh, faGear  } from "@fortawesome/free-solid-svg-icons";
 
 export const slotPageNavLinks = [
   { name: "Documentation", icon: faBook },
   { name: "Dashboard", icon: faGaugeHigh },
   { name: "Availability", icon: faClock },
   { name: "All Users", icon: faUsers },
+  { name: "Edit Profile", icon: faGear },
   { name: "Upgrade Plan", icon: faDollarSign },
   { name: "Analytics", icon: faChartSimple },
   { name: "Admin center", icon: faCrown },
   { name: "Help", icon: faCircleQuestion },
-  { name: "Edit Profile", icon: faCircleQuestion },
 ];
 export const accountSettingsLinks = [
   { name: "Profile", icon: faUser },

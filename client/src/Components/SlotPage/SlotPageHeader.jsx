@@ -24,7 +24,7 @@ const profileImageSrc = profilePicture.startsWith("http")
             <a href='/slot' className='flex items-center gap-3 text-lg font-semibold text-zinc-500'><img src='/images/zelthy.png' alt='company-logo' className='w-12'/>Zelthy Slot</a>
             <div className='flex gap-4'>
             <button ><img src='/images/dark-mode.png' alt='dark-mode' className='size-5'/></button>
-            <div onClick={() => setshowAccountMenu(!showAccountMenu)} className='size-10 rounded-full bg-red-500 cursor-pointer overflow-hidden'>
+            <div onClick={() => setshowAccountMenu(!showAccountMenu)} className='size-10 rounded-full bg-white border border-black/20 cursor-pointer overflow-hidden'>
               <img src={profileImageSrc} alt='Me' className='w-full h-full object-cover'/>
             </div>
             {showAccountMenu && (

@@ -14,10 +14,10 @@ const handleTimezoneChange = (tz) => {
     setShowDropdown(false); 
   };
   return (
-    <div style={{boxShadow:" rgba(0, 0, 0, 0.24) 0px 3px 8px"}} className="flex flex-col gap-4 mt-6 rounded-md md:rounded-lg p-3 md:p-6 lg:p-10 bg-yellow-100">
+    <div style={{boxShadow:" rgba(0, 0, 0, 0.24) 0px 3px 8px"}} className="flex flex-col gap-4 mt-6 rounded-md md:rounded-lg p-3 md:p-6 lg:p-10 bg--100">
         {daysOfWeek.map((day) => (
-          <div key={day} className="flex flex-wrap items-center gap-4 bg-red-300 ">
-            <p className="text-sm md:text-base text-[#476788] font-medium w-20 md:w-24 bg-pink-300 capitalize">{day}</p>
+          <div key={day} className="flex flex-wrap items-center gap-4 bg--300 ">
+            <p className="text-sm md:text-base text-[#476788] font-medium w-20 md:w-24 bg--300 capitalize">{day}</p>
             {availability[day].isAvailable ? (
               <>
                 <select

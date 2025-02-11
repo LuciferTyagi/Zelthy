@@ -51,16 +51,20 @@ const AllUser = () => {
               </ul>
             </div>
 
-            <div className="User-Availablity bg--400 grid grid-cols-3 gap-6">
+            <div className="User-Availablity bg--400 ">
+              {availability && (
+              <h1 className="bg-[#066BFF] text-white font-medium capitalize w-fit p-2 rounded-md">Availability of {selectedUser}</h1>
+            )}
+                
             {availability && (
-              <>
+              <div className="grid grid-cols-3 gap-6 mt-4 ">
            {Object.entries(availability).map(([day, { isAvailable, startTime, endTime }]) => (
             <div key={day} className={`h-auto rounded-md flex flex-col items-center p-2 ${isAvailable ? "bg-green-100 cursor-pointer" : "bg-red-100 cursor-not-allowed opacity-60"}`}>
              <p className="text-base text-blue-500 font-semibold capitalize">{day}</p>
              {isAvailable ? ( <p className="text-sm text-zinc-500 mt-2">{`${startTime} - ${endTime}`}</p>) : (<p className="text-sm mt-2 text-zinc-500">Unavailable</p>)}
            </div>
         ))}
-        </>
+        </div>
       )}
             </div>
       </div>

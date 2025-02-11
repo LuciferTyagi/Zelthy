@@ -2,6 +2,7 @@ import React, { useState , useEffect } from 'react'
 import Dashboard from './Dashboard'
 import AllUser from '../AllUser'
 import Availablity from '../AvailablityPage/Availablity'
+import Footer from "../Footer"
 import SlotPageHeader from './SlotPageHeader';
 import EditProfile from '../EditProfile';
 import Documentation from '../Documentation';
@@ -23,9 +24,9 @@ const components = {
   "Documentation": <Documentation/>
 }
   return (
-    <section className='bg--500 w-full h-[90vh] font-[inter]'>
+    <section className='bg--500 w-full min-h-screen  font-[inter]'>
             <SlotPageHeader/>
-            <div className='bg--300 w-full h-full'>
+            
                  <div className='w-full max-w-[1440px] mx-auto bg--300 h-full lg:grid lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-20 py-5 lg:py-10'>
                 <SlotPageSidebar tabSelected={tabSelected} setTabSelected ={setTabSelected}/>
 
@@ -34,7 +35,8 @@ const components = {
                 </main>
                  </div>
 
-            </div>
+            
+            <Footer/>
     </section>
   )
 }

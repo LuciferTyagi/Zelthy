@@ -10,7 +10,7 @@ const Documentation = () => {
   const { availability, timezone, status, error } = useSelector((state) => state.user);
 
   return (
-    <div className='bg-green-300 w-full h-full '>
+    <div className='bg--300 w-full h-full '>
           <div className='Introduction flex flex-col gap-4'>
                 <h1 className='text-5xl font-bold text-blue-500'>Zelthy Slot</h1>
                 <p className='text-lg text-zinc-500 font-medium'>Zelthy Slot – A seamless and efficient slot booking platform that lets users set their availability and schedule appointments effortlessly across different <span className='text-blue-500'>time zones</span></p>
