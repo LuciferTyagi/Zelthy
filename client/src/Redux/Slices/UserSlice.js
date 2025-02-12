@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { defaultAvailability } from "../../Components/AvailablityPage/Constant";
+import {BASE_URL} from "../../Utils/Constant"
+
 export const fetchUserProfile = createAsyncThunk("user/fetchUserProfile", async () => {
-  const response = await axios.get("http://localhost:8000/api/user/me", {
+  const response = await axios.get(`${BASE_URL}/api/user/me`, {
     headers: { Authorization: localStorage.getItem("token") },
   });
   return response.data;
@@ -11,7 +13,7 @@ export const fetchAvailability = createAsyncThunk(
   "user/fetchAvailability",
   async () => {
     try {
-      const response = await axios.get("http://localhost:8000/api/availability/myAvailability", {
+      const response = await axios.get(`${BASE_URL}/api/availability/myAvailability`, {
         headers: { Authorization: localStorage.getItem("token") },
       });
       

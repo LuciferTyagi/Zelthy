@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../../Redux/Slices/UserSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { BASE_URL } from "../../Utils/Constant";
 
 const Dashboard = ({setTabSelected }) => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const Dashboard = ({setTabSelected }) => {
         dispatch(fetchUserProfile());
     }, [dispatch]);
 
-    const profileImageSrc = profilePicture.startsWith("http") ? profilePicture : `http://localhost:8000${profilePicture}`;
+    const profileImageSrc = profilePicture.startsWith("http") ? profilePicture : `${BASE_URL}${profilePicture}`;
 
     return (
         <div className="Dashboard-Wrapper w-full h-full bg--300">

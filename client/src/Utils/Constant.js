@@ -1,4 +1,4 @@
-
+export const BASE_URL = 'https://zelthyslot-server.vercel.app';
 export const buildUsingData = [
     {
       name: "React.js",

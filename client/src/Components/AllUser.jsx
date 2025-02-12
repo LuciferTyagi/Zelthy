@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { BASE_URL } from "../Utils/Constant";
 const AllUser = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -9,7 +9,7 @@ const AllUser = () => {
   
   useEffect(() => {
     axios
-    .get("http://localhost:8000/api/user/allusers") 
+    .get(`${BASE_URL}/api/user/allusers`) 
     .then((response) => setUsers(response.data))
     .catch((error) => console.error("Error fetching users:", error));
     
@@ -19,7 +19,7 @@ const AllUser = () => {
     setSelectedUser(name); 
     setAvailability(null); 
     axios
-    .get(`http://localhost:8000/api/availability/${userId}`, {
+    .get(`${BASE_URL}/api/availability/${userId}`, {
       headers: { Authorization: localStorage.getItem("token") },
     })
     .then((response) => {
@@ -41,7 +41,7 @@ const AllUser = () => {
                {users.length > 0 ? (
                 users.map((user) => (
                    <li key={user._id} className=" mb-4 cursor-pointer text-zinc-400 hover:text-zinc-700 dark:hover:text-white font-medium  flex flex-col items-center gap-3" onClick={() => fetchAvailability(user._id, user.username)}>
-                     <div className="size-16 bg-white border border-black/20 rounded-full overflow-hidden"><img src={user.profilePicture.startsWith("http") ? user.profilePicture : `http://localhost:8000${user.profilePicture}`} alt="user" className=""/> </div>
+                     <div className="size-16 bg-white border border-black/20 rounded-full overflow-hidden"><img src={user.profilePicture.startsWith("http") ? user.profilePicture : `${BASE_URL}${user.profilePicture}`} alt="user" className=""/> </div>
                       <p className="capitalize ">{user.username}</p>
                    </li>
                  ))

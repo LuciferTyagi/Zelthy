@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../Utils/Constant';
 
 const AuthCard = ({ title, subtitle, buttonText, redirectText, redirectLink, redirectHref ,isLogin }) => {
   const[name ,  setName] = useState("");
@@ -11,7 +12,7 @@ const AuthCard = ({ title, subtitle, buttonText, redirectText, redirectLink, red
   const handleSubmit = async (e) =>{
     e.preventDefault();
     setError("");
-    const endpoint = isLogin ? "http://localhost:8000/api/auth/login" : "http://localhost:8000/api/auth/register";
+    const endpoint = isLogin ? `${BASE_URL}/api/auth/login` : `${BASE_URL}/api/auth/register`;
     try {
       const response = await axios.post(endpoint, { username:name, email });
 

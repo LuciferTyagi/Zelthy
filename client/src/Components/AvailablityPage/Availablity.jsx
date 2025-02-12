@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {   updateAvailability  } from "../../Redux/Slices/UserSlice.js";
 import CopyMenu from "./CopyMenu.jsx";
 import AvailablityBox from "./AvailablityBox.jsx";
+import { BASE_URL } from "../../Utils/Constant.js";
 const daysOfWeek = Object.keys(defaultAvailability);
 
 const Availablity = () => {
@@ -67,7 +68,7 @@ const Availablity = () => {
   const updateAvailabilityInBackend = async () => {
     try {
       await axios.put(
-        "http://localhost:8000/api/availability/update",
+        `${BASE_URL}/api/availability/update`,
         { availability , timezone },
         { headers: { Authorization: localStorage.getItem("token") } }
       );

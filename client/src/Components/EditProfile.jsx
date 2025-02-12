@@ -4,6 +4,7 @@ import axios from "axios";
 import { fetchUserProfile } from "../Redux/Slices/UserSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { BASE_URL } from "../Utils/Constant";
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const EditProfile = () => {
 
     try {
       await axios.put(
-        "http://localhost:8000/api/user/uploadProfilePicture",
+        `${BASE_URL}/api/user/uploadProfilePicture`,
         formData,
         {
           headers: {
@@ -40,7 +41,7 @@ const EditProfile = () => {
         }
       );
 
-      // Re-fetch user profile to update Redux store with new profile picture
+      
       dispatch(fetchUserProfile());
 
       alert("Profile picture updated!");
@@ -48,7 +49,7 @@ const EditProfile = () => {
       console.error("Error uploading profile picture", error);
     }
   };
-  const profileImageSrc = profilePicture.startsWith("http") ? profilePicture : `http://localhost:8000${profilePicture}`;
+  const profileImageSrc = profilePicture.startsWith("http") ? profilePicture : `${BASE_URL}${profilePicture}`;
 
   return (
     <div className="Edit-Profile-Container w-full h-full">
