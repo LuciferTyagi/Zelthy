@@ -25,18 +25,20 @@ const getAllUsers = async (req, res) => {
 
 const updateProfilePicture = async (req, res) => {
   try {
-      const userId = req.user.id; 
-      const profilePicturePath = req.file ? `/uploads/${req.file.filename}` : null;
+    const userId = req.user.id;
 
-      if (!profilePicturePath) {
-          return res.status(400).json({ message: "No file uploaded" });
-      }
+    const profilePictureUrl = req.file.path; 
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
 
-      await User.findByIdAndUpdate(userId, { profilePicture: profilePicturePath });
 
-      res.status(200).json({ message: "Profile picture updated successfully", profilePicture: profilePicturePath });
+    
+    await User.findByIdAndUpdate(userId, { profilePicture: profilePictureUrl });
+
+    res.status(200).json({ message: "Profile picture updated successfully", profilePicture: profilePictureUrl });
   } catch (error) {
-      res.status(500).json({ message: "Server error", error });
+    res.status(500).json({ message: "Server error", error });
   }
 };
 module.exports = { getAllUsers , updateProfilePicture , getUserProfile};

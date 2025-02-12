@@ -31,7 +31,7 @@ const EditProfile = () => {
 
     try {
       await axios.put(
-        `${BASE_URL}/api/user/uploadProfilePicture`,
+        `http://localhost:8000/api/user/uploadProfilePicture`,
         formData,
         {
           headers: {
