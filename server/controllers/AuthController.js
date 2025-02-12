@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const moment = require('moment-timezone');
 const Availability = require("../models/Availability");
 
+
 const generateInitialAvatar = (name) => {
     const initial = name.charAt(0).toUpperCase();
     return `https://ui-avatars.com/api/?name=${initial}&background=random&color=fff&size=128`; 
