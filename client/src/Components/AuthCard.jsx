@@ -27,7 +27,7 @@ const AuthCard = ({ title, subtitle, buttonText, redirectText, redirectLink, red
     }
   }
   return (
-    <div style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className='bg-white dark:bg-[#1E1E1E] rounded-lg p-4 md:p-8 flex flex-col gap-5 text-center'>
+    <div style={{boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}} className='bg-white dark:bg-[#1E1E1E] rounded-lg p-4 md:p-8 flex flex-col gap-5 text-center sm:max-w-[600px] mx-auto lg:max-w-full'>
     <h1 className='text-3xl md:text-5xl text-[#0B3558] dark:text-white font-bold leading-snug'>{title}</h1>
     <p className='text-[#476788] dark:text-[#B0B0B0] text-sm md:text-lg font-medium'>{subtitle}</p>
     {error && <p className="text-red-500">{error}</p>}

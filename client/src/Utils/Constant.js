@@ -69,8 +69,8 @@ export const footerLinks = [
 export const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/" },
-  { name: "Zelthy", path: "/" },
-  { name: "Github", path: "/" },
+  { name: "Zelthy", path: "https://www.zelthy.com/" },
+  { name: "Github", path: "https://github.com/LuciferTyagi/Zelthy" },
 ];
 
 import { faUser, faClock, faUsers ,faDollarSign ,faChartSimple ,faCrown , faCircleQuestion ,faStar ,faArrowRightFromBracket, faBook, faGaugeHigh, faGear  } from "@fortawesome/free-solid-svg-icons";

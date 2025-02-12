@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useLocation } from "react-router-dom";
 import { navLinks, slotPageNavLinks } from '../../Utils/Constant';
 import ThemeToggle from '../ThemeToggle';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
+
 const Header = ({ setActiveTab }) => {
 const[showMobileMenu , setShowMobileMenu] = useState(false);
 const location = useLocation();
@@ -35,20 +38,20 @@ const buttonPath = isSignUpPage ? "/log-in" : "/sign-up";
                   <a href='/'><img src='/images/zelthy.png' alt='company-logo' className='w-12'/></a>
                 
                   <div className='flex items-center gap-5'>
-                  <button className='bg-[#006BFF] dark:bg-black dark:text-black text-white font-semibold rounded-lg py-2.5 px-4 text-sm'><a href={buttonPath}>{buttonText}</a></button>
-                  <button onClick={() => setShowMobileMenu(true)}><img src='/images/menu.png' alt='menu' className='size-6'/></button>
+                  <button className='bg-[#006BFF] dark:bg-white dark:text-black text-white font-semibold rounded-lg py-2.5 px-4 text-sm'><a href={buttonPath}>{buttonText}</a></button>
+                  <button onClick={() => setShowMobileMenu(true)}><FontAwesomeIcon icon={faBars} className="dark:text-white size-5"/></button>
                   </div>
                   {showMobileMenu && (
-                           <div className="fixed z-[100] inset-0 w-full h-screen bg-white px-4">
+                           <div className="fixed z-[100] inset-0 w-full h-screen bg-white dark:bg-[#1E1E1E] px-4">
                                  <div className="Tools flex justify-between items-center mt-6">
-                                      <span className="text-2xl font-pacifico">Yagyansh Tyagi.</span>
+                                      <span className="text-2xl font-pacifico dark:text-white font-Medium">Yagyansh Tyagi.</span>
                                       <div className="flex gap-4">
-                                            <button><img src='/images/dark-mode.png' alt='dark-mode' className='size-5'/></button>
-                                            <button onClick={() => setShowMobileMenu(false)}><img src='/images/close.png' alt='close' className='size-5'/></button>
+                                            <ThemeToggle/>
+                                            <button onClick={() => setShowMobileMenu(false)}><FontAwesomeIcon icon={faX} className='dark:text-white size-5'/></button>
                                       </div>
                                  </div>
                                  
-                                 <ul className="flex flex-col gap-1 text-[26px] mt-4 ml-3 font-tajawal">
+                                 <ul className="flex flex-col gap-1 text-[26px] mt-4 ml-3 dark:text-[#B0B0B0]">
                                  {navLinks.map((link) => (
                                  <li key={link.name}> <a href={link.path}>{link.name}</a></li>
                                   ))}    
