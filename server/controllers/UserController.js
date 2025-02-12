@@ -26,8 +26,8 @@ const getAllUsers = async (req, res) => {
 const updateProfilePicture = async (req, res) => {
   try {
     const userId = req.user.id;
-
     const profilePictureUrl = req.file.path; 
+    
     if (!req.file) {
       return res.status(400).json({ message: "No file uploaded" });
     }

@@ -49,7 +49,7 @@ const EditProfile = () => {
       console.error("Error uploading profile picture", error);
     }
   };
-  // const profileImageSrc = profilePicture.startsWith("http") ? profilePicture : `${BASE_URL}${profilePicture}`;
+  const profileImageSrc = profilePicture.startsWith("http") ? profilePicture : `${BASE_URL}${profilePicture}`;
 
   return (
     <div className="Edit-Profile-Container w-full h-full">
@@ -58,7 +58,7 @@ const EditProfile = () => {
       <div className="Image-Upload-Container w-full flex justify-center items-center py-20">
             <div className="relative size-[275px] bg-[#066BFF] dark:bg-[#1E1E1E] rounded-lg flex justify-center items-center">
             <div className=" Image-container absolute rounded-full size-32 overflow-hidden bg-white bottom-[70%] left-1/2 transform -translate-x-1/2 border border-black/20">
-                  <img src={profilePicture} alt="user-image"className=""/>
+                  <img src={profileImageSrc} alt="user-image"className=""/>
             </div>
             <label className="absolute bg-white px-4 py-2 rounded-lg cursor-pointer shadow-md flex items-center gap-2 hover:bg-gray-200 transition">
                   <FontAwesomeIcon icon={faCamera} className="text-blue-500"/>Upload Image
