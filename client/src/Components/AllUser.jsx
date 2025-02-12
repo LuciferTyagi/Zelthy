@@ -32,17 +32,17 @@ const AllUser = () => {
 
   return (
     <div className="bg--200">
-      <h1 className="text-3xl md:text-5xl font-bold text-blue-500">Meet Our Community</h1>
-      <p className=" text-sm md:text-lg text-zinc-500 font-medium mt-0.5 md:mt-2">Browse and see the availability of other users.</p>
+      <h1 className="text-3xl md:text-5xl font-bold text-blue-500 dark:text-white">Meet Our Community</h1>
+      <p className=" text-sm md:text-lg text-zinc-500 font-medium mt-0.5 md:mt-2 dark:text-[#B0B0B0]">Browse and see the availability of other users.</p>
       
-      <div style={{boxShadow:" rgba(0, 0, 0, 0.24) 0px 3px 8px"}} className="rounded-lg py-20 px-5 md:px-10 bg-white flex flex-col gap-10  mt-4">
+      <div style={{boxShadow:" rgba(0, 0, 0, 0.24) 0px 3px 8px"}} className="rounded-lg py-20 px-5 md:px-10 bg-white dark:bg-[#1E1E1E] flex flex-col gap-10  mt-4">
             <div className="User-Profiles-section  ">
             <ul className="flex flex-wrap gap-4  justify-evenly">
                {users.length > 0 ? (
                 users.map((user) => (
-                   <li key={user._id} className=" mb-4 cursor-pointer text-zinc-400 hover:text-zinc-700 font-medium  flex flex-col items-center gap-3" onClick={() => fetchAvailability(user._id, user.username)}>
+                   <li key={user._id} className=" mb-4 cursor-pointer text-zinc-400 hover:text-zinc-700 dark:hover:text-white font-medium  flex flex-col items-center gap-3" onClick={() => fetchAvailability(user._id, user.username)}>
                      <div className="size-16 bg-white border border-black/20 rounded-full"><img src={user.profilePicture.startsWith("http") ? user.profilePicture : `http://localhost:8000${user.profilePicture}`} alt="user" className=""/> </div>
-                      <p className="capitalize">{user.username}</p>
+                      <p className="capitalize ">{user.username}</p>
                    </li>
                  ))
                ) : (
@@ -53,7 +53,7 @@ const AllUser = () => {
 
             <div className="User-Availablity bg--400 ">
               {availability && (
-              <h1 className="bg-[#066BFF] text-white font-medium capitalize w-fit p-2 rounded-md">Availability of {selectedUser}</h1>
+              <h1 className="bg-[#066BFF] dark:bg-white dark:text-black text-white font-medium capitalize w-fit p-2 rounded-md">Availability of {selectedUser}</h1>
             )}
                 
             {availability && (

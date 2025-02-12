@@ -79,8 +79,8 @@ const Availablity = () => {
 
   return (
     <div className="bg--300 w-full">
-      <h1 className = "text-3xl md:text-5xl font-bold text-blue-500 ">Availability</h1>
-      <p  className = "text-sm md:text-lg text-zinc-500 font-medium mt-0.5 md:mt-2">Set your available time slots for booking</p>
+      <h1 className = "text-3xl md:text-5xl font-bold text-blue-500 dark:text-white">Availability</h1>
+      <p  className = "text-sm md:text-lg text-zinc-500 font-medium mt-0.5 md:mt-2 dark:text-[#B0B0B0]">Set your available time slots for booking</p>
 
       <AvailablityBox handleTimeChange={handleTimeChange} handleToggleAvailability={handleToggleAvailability} handleCopyClick={handleCopyClick}/>
 
@@ -88,7 +88,7 @@ const Availablity = () => {
         <CopyMenu daysOfWeek={daysOfWeek} applyCopiedTime={applyCopiedTime} copyMenu={copyMenu} setCopyMenu={setCopyMenu}/>
       )}
 
-      <button onClick={updateAvailabilityInBackend} className="Save-Button mt-5 bg-[#006BFF] text-white px-4 lg:px-6 py-3 rounded-lg font-semibold" >Save Changes</button>
+      <button onClick={updateAvailabilityInBackend} className="Save-Button mt-5 bg-[#006BFF] dark:bg-white dark:text-black text-white px-4 lg:px-6 py-3 rounded-lg font-semibold" >Save Changes</button>
     </div>
   );
 };
