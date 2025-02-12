@@ -14,18 +14,18 @@ const[sideBar , setSideBar] = useState(false);
                    Sidebar
                  </button>
                  {sideBar && (
-                   <div className=' fixed  inset-0  backdrop-blur-sm lg:hidden'>
+                   <div className=' fixed z-30  inset-0  backdrop-blur-sm lg:hidden'>
                         <aside style={{boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}  class="Mobile  z-30 h-full w-full sm:w-1/2 lg:hidden">
-                    <nav className='relative h-full flex flex-col justify-between bg-white px-4 py-2 rounded-lg'>                  
+                    <nav className='relative h-full flex flex-col justify-between bg-white dark:bg-[#1E1E1E] px-4 py-2 rounded-lg'>                  
                         <ul className='flex flex-col gap-5 '>
                           <div className='flex justify-between gap-6 '>
-                          <button onClick={() => setTabSelected("Availability")} className='w-full flex items-center justify-center p-3 text-sm gap-3 font-medium text-blue-500 border border-blue-500 hover:bg-blue-50 rounded-full '><FontAwesomeIcon icon={faPlus} className='bg--200'/>Create</button>
-                          <button onClick={() => setSideBar(false)}><FontAwesomeIcon icon={faX} className='w-fit'/></button>
+                          <button onClick={() => setTabSelected("Availability")} className='w-full flex items-center justify-center p-3 text-sm gap-3 font-medium text-blue-500 border border-blue-500 hover:bg-blue-50 rounded-full dark:text-white dark:border-white dark:hover:bg-[#2A2A2A]'><FontAwesomeIcon icon={faPlus} className='bg--200'/>Create</button>
+                          <button onClick={() => setSideBar(false)}><FontAwesomeIcon icon={faX} className='w-fit dark:text-white'/></button>
                           </div>
                           {slotPageNavLinks.slice(0).map((item) =>(
                             <li key={item.name} onClick={() => {
                               setTabSelected(item.name) 
-                              setSideBar(false)}} className={`cursor-pointer rounded-lg  p-3 flex items-center gap-3 text-sm font-semibold ${tabSelected === item.name ? "text-blue-500 bg-blue-100/50" : "text-[#0A2540] hover:bg-blue-50"}`}><FontAwesomeIcon icon={item.icon} className=''/>{item.name}</li>
+                              setSideBar(false)}} className={`cursor-pointer rounded-lg  p-3 flex items-center gap-3 text-sm font-semibold ${tabSelected === item.name ? "text-blue-500 bg-blue-100/50 dark:text-white" : "text-[#0A2540] hover:bg-blue-50 dark:text-[#B0B0B0] dark:hover:bg-[#2A2A2A]"}`}><FontAwesomeIcon icon={item.icon} className=''/>{item.name}</li>
                           ))}
                         </ul>
                       
