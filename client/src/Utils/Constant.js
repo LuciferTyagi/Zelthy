@@ -42,11 +42,11 @@ export const footerLinks = [
     {
       title: "Components",
       links: [
-        { name: "About", href: "/accordion" },
-        { name: "Zelthy", href: "/accordion" },
-        { name: "Portfolio", href: "/accordion" },
-        { name: "Book a Slot", href: "/accordion" },
-        { name: "Log-In", href: "/alert" },
+        { name: "About", href: "/" },
+        { name: "Zelthy", href: "https://www.zelthy.com/" },
+        { name: "Portfolio", href: "https://easy-ui-client.vercel.app/" },
+        { name: "Book a Slot", href: "/sign-up" },
+        { name: "Log-In", href: "/log-in" },
       ],
     },
     {

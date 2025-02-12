@@ -29,7 +29,7 @@ const profileImageSrc = profilePicture.startsWith("http")
               <img src={profileImageSrc} alt='Me' className='w-full h-full object-cover'/>
             </div>
             {showAccountMenu && (
-                <div style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className='Account-Menu absolute p-4 w-[200px] bg-white top-20 right-0 flex flex-col rounded-lg'>
+                <div style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className='Account-Menu absolute p-4 w-[200px] bg-white top-20 right-0 flex flex-col rounded-lg z-[1]'>
                       <h1 className='text-base font-semibold'>{username}</h1>
                       <p className='text-sm text-zinc-300'><a href='/upgrade' className='text-blue-500 font-medium'>Upgrade</a> any time</p>
                       <div className='h-[1px] w-full bg-black/20 my-4 '/>

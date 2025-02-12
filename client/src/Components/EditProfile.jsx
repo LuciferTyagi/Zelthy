@@ -52,8 +52,8 @@ const EditProfile = () => {
 
   return (
     <div className="Edit-Profile-Container w-full h-full">
-      <h2 className="text-5xl text-blue-500  font-bold dark:text-white">Edit Profile</h2>
-      <p className="text-lg text-zinc-500 font-medium mt-4 dark:text-[#B0B0B0]">Customize your profile to reflect the best version of yourself—update details, add a profile picture, and make it truly yours!</p>
+      <h2 className="text-3xl md:text-5xl text-blue-500  font-bold dark:text-white">Edit Profile</h2>
+      <p className="text-basse md:text-lg text-zinc-500 font-medium mt-2 md:mt-4 dark:text-[#B0B0B0]">Customize your profile to reflect the best version of yourself—update details, add a profile picture, and make it truly yours!</p>
       <div className="Image-Upload-Container w-full flex justify-center items-center py-20">
             <div className="relative size-[275px] bg-[#066BFF] dark:bg-[#1E1E1E] rounded-lg flex justify-center items-center">
             <div className=" Image-container absolute rounded-full size-32 overflow-hidden bg-white bottom-[70%] left-1/2 transform -translate-x-1/2 border border-black/20">
