@@ -33,7 +33,7 @@ export const fetchDailyAvailability = createAsyncThunk("user/fetchDailyAvailabil
     const userId = state.user.userId; 
     if (!userId) throw new Error("User ID is missing");
 
-    const response = await axios.get(`${BASE_URL}/daily-Availability/${userId}`, {
+    const response = await axios.get(`${BASE_URL}/api/daily-Availability/${userId}`, {
       headers: { Authorization: localStorage.getItem("token") },
     });
     return response.data || {}; 
