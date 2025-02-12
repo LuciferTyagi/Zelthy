@@ -26,7 +26,7 @@ const profileImageSrc = profilePicture.startsWith("http")
             <div className='flex gap-4'>
             <ThemeToggle/>
             <div onClick={() => setshowAccountMenu(!showAccountMenu)} className='size-10 rounded-full bg-white border border-black/20 cursor-pointer overflow-hidden'>
-              <img src={profileImageSrc} alt='Me' className='w-full h-full object-cover'/>
+              <img src={profilePicture} alt='Me' className='w-full h-full object-cover'/>
             </div>
             {showAccountMenu && (
                 <div style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className='Account-Menu absolute p-4 w-[200px] bg-white top-20 right-0 flex flex-col rounded-lg z-[1]'>

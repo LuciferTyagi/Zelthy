@@ -13,7 +13,7 @@ const Dashboard = ({setTabSelected }) => {
         dispatch(fetchUserProfile());
     }, [dispatch]);
 
-    const profileImageSrc = profilePicture.startsWith("http") ? profilePicture : `${BASE_URL}${profilePicture}`;
+    // const profileImageSrc = profilePicture.startsWith("http") ? profilePicture : `${BASE_URL}${profilePicture}`;
 
     return (
         <div className="Dashboard-Wrapper w-full h-full bg--300">
@@ -23,7 +23,7 @@ const Dashboard = ({setTabSelected }) => {
                  <div className="User-Profile-Card size-[275px] flex justify-end pt-[100px]">
                      <div className="relative bg-blue-500 dark:bg-[#1E1E1E] rounded-xl w-full h-full flex flex-col gap-4 justify-center items-start px-2 ">
                           <div className="Image-container absolute rounded-full size-32 overflow-hidden bg-white bottom-[70%] left-1/2 transform -translate-x-1/2 border border-black/20">
-                                <img src={profileImageSrc} alt="user-image"className=""/>
+                                <img src={profilePicture} alt="user-image"className=""/>
                           </div>
                           <h2 className="User-Name capitalize text-white text-lg font-semibold mt-4">{username}</h2>
                           <button onClick={() => setTabSelected("Availability")} className="border border-white text-white rounded-full px-3 py-1 flex items-center gap-2">{timezone}<FontAwesomeIcon icon={faArrowRight} className=""/></button>
