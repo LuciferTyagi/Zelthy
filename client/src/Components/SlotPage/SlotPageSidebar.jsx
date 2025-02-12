@@ -33,12 +33,12 @@ const[sideBar , setSideBar] = useState(false);
                        </aside>
                     </div>
                  )}                
-                <aside style={{boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}  class="Desktop hidden z-30 rounded-lg  sticky top-0  h-full w-full   lg:block  bg-red-300  ">
-                    <nav className='h-full flex flex-col justify-between bg-white px-4 py-2 pb-6 rounded-lg'>                  
+                <aside style={{boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px"}}  class="Desktop hidden z-30 rounded-lg  sticky top-0  h-full w-full lg:block">
+                    <nav className='h-full flex flex-col justify-between bg-white dark:bg-[#1E1E1E] px-4  py-6 rounded-lg'>                  
                         <ul className='flex flex-col gap-5 '>
-                          <button onClick={() => setTabSelected("Availability")} className='flex items-center justify-center p-3 text-base gap-3 font-medium text-blue-500 border border-blue-500 hover:bg-blue-50 rounded-full'><FontAwesomeIcon icon={faPlus} className='bg--200'/>Create</button>
+                          <button onClick={() => setTabSelected("Availability")} className='flex items-center justify-center p-3 text-base gap-3 font-medium text-blue-500 border dark:text-white dark:border-white dark:hover:bg-[#2A2A2A] border-blue-500 hover:bg-blue-50 rounded-full'><FontAwesomeIcon icon={faPlus} className='bg--200'/>Create</button>
                           {slotPageNavLinks.slice(0).map((item) =>(
-                            <li key={item.name} onClick={() => setTabSelected(item.name)} className={`cursor-pointer rounded-lg  p-3 flex items-center gap-3 text-base font-semibold ${tabSelected === item.name ? "text-blue-500 bg-blue-100/50" : "text-[#0A2540] hover:bg-blue-50"}`}><FontAwesomeIcon icon={item.icon} className=''/>{item.name}</li>
+                            <li key={item.name} onClick={() => setTabSelected(item.name)} className={`cursor-pointer rounded-lg  p-3 flex items-center gap-3 text-base font-semibold ${tabSelected === item.name ? "text-blue-500 dark:text-white bg-blue-100/50" : "text-[#0A2540] dark:text-[#B0B0B0] dark:hover:bg-[#2A2A2A] hover:bg-blue-50"}`}><FontAwesomeIcon icon={item.icon} className=''/>{item.name}</li>
                           ))}
                         </ul>
                       

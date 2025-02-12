@@ -4,6 +4,7 @@ import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { accountSettingsLinks } from '../../Utils/Constant';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
+import ThemeToggle from '../ThemeToggle';
 
 const SlotPageHeader = () => {
 
@@ -19,11 +20,11 @@ const profileImageSrc = profilePicture.startsWith("http")
 ? profilePicture
 : `http://localhost:8000${profilePicture}`;
   return (
-    <header style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className='bg--400 w-full font-[inter]'>
-            <nav className='relative  w-full mx-auto max-w-[1440px] bg-white rounded-lg flex justify-between items-center py-4 px-2'>
-            <a href='/slot' className='flex items-center gap-3 text-lg font-semibold text-zinc-500'><img src='/images/zelthy.png' alt='company-logo' className='w-12'/>Zelthy Slot</a>
+    <header style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className='bg-white dark:bg-black w-full font-[inter] border-b border-white/20'>
+            <nav className='relative  w-full mx-auto max-w-[1440px]  flex justify-between items-center py-4 px-2'>
+            <a href='/slot' className='flex items-center gap-3 text-lg font-semibold text-zinc-500 dark:text-white'><img src='/images/zelthy.png' alt='company-logo' className='w-12'/>Zelthy Slot</a>
             <div className='flex gap-4'>
-            <button ><img src='/images/dark-mode.png' alt='dark-mode' className='size-5'/></button>
+            <ThemeToggle/>
             <div onClick={() => setshowAccountMenu(!showAccountMenu)} className='size-10 rounded-full bg-white border border-black/20 cursor-pointer overflow-hidden'>
               <img src={profileImageSrc} alt='Me' className='w-full h-full object-cover'/>
             </div>
