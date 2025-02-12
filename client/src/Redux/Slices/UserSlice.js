@@ -26,10 +26,27 @@ export const fetchAvailability = createAsyncThunk(
     }
   }
 );
+
+export const fetchDailyAvailability = createAsyncThunk("user/fetchDailyAvailability", async (_, { rejectWithValue, getState }) => {
+  try {
+    const state = getState();
+    const userId = state.user.userId; 
+    if (!userId) throw new Error("User ID is missing");
+
+    const response = await axios.get(`${BASE_URL}/daily-Availability/${userId}`, {
+      headers: { Authorization: localStorage.getItem("token") },
+    });
+    return response.data || {}; 
+  } catch (error) {
+    return rejectWithValue(error.response?.data || "Failed to fetch daily availability");
+  }
+});
 const initialState = {
+  userId:null,
   username: "",
   profilePicture: "",
   availability: defaultAvailability,
+  dailyAvailability: [],
   timezone: "Asia/Kolkata",
   status: "idle", 
   error: null,
@@ -49,6 +66,13 @@ const userSlice = createSlice({
       const { day, newAvailability } = action.payload;
       state.availability[day] = newAvailability;
     },
+    setDailyAvailability: (state, action) => {
+      const { date, availability } = action.payload;
+      state.dailyAvailability[date] = availability;
+    },
+    removeDailyAvailability: (state, action) => {
+      state.dailyAvailability = state.dailyAvailability.filter(item => item._id !== action.payload);
+    },
     setTimezone: (state, action) => {
       state.timezone = action.payload;
     },
@@ -61,6 +85,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchUserProfile.fulfilled, (state, action) => {
         state.status = "succeeded";
+        state.userId = action.payload._id;
         state.username = action.payload.username;
         state.profilePicture = action.payload.profilePicture;
       })
@@ -80,10 +105,22 @@ const userSlice = createSlice({
         state.status = "failed";
         state.error = action.payload;
       })
+
+      .addCase(fetchDailyAvailability.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchDailyAvailability.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.dailyAvailability = action.payload; 
+      })
+      .addCase(fetchDailyAvailability.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      });
      
 
   },
 });
 
-export const { setUser, setProfilePicture , updateAvailability , setTimezone  } = userSlice.actions;
+export const { setUser, setProfilePicture , updateAvailability ,setDailyAvailability ,setTimezone,removeDailyAvailability  } = userSlice.actions;
 export default userSlice.reducer;
