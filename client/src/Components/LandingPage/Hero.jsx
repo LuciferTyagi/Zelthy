@@ -1,6 +1,6 @@
 import React from 'react'
 import { buildUsingData } from '../../Utils/Constant'
-import {motion} from "Framer-motion"
+import { motion } from "motion/react"
 const Hero = () => {
   const headingVariants = {
     hidden: { x: -200, opacity: 0 },

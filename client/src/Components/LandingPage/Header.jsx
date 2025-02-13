@@ -4,7 +4,7 @@ import { navLinks, slotPageNavLinks } from '../../Utils/Constant';
 import ThemeToggle from '../ThemeToggle';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
-import {motion} from "Framer-motion"
+import { motion } from "motion/react"
 const Header = ({ setActiveTab }) => {
 const[showMobileMenu , setShowMobileMenu] = useState(false);
 const location = useLocation();
