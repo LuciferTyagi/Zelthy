@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { fetchUserProfile } from "../Redux/Slices/UserSlice";
+import { fetchUserProfile } from "../../Redux/Slices/UserSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCamera } from "@fortawesome/free-solid-svg-icons";
-import { BASE_URL } from "../Utils/Constant";
+import { BASE_URL } from "../../Utils/Constant";
 
 const EditProfile = () => {
   const dispatch = useDispatch();

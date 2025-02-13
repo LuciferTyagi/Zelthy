@@ -1,9 +1,9 @@
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
-import { featureData } from '../Utils/Constant'
+import { featureData } from '../../Utils/Constant'
 import React from 'react'
-import Faq from './Faq'
+import Faq from '../Faq'
 import { useSelector } from 'react-redux'
 
 const Documentation = () => {

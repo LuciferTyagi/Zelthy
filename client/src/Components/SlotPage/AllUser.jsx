@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../Utils/Constant";
+import { BASE_URL } from "../../Utils/Constant";
 const AllUser = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
