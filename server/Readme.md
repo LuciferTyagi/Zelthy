@@ -23,20 +23,21 @@ git clone https://github.com/LuciferTyagi/Zelthy
 cd Zelthy/server
 ```
 ## **1️⃣ Clone the Repository**
-npm install
+- npm install
 
 ## **3️⃣ Set Up Environment Variables**
-PORT=8000
-MONGO_URI=mongodb+srv://your_mongo_connection_string
-JWT_SECRET=your_secret_key
-CLOUDINARY_CLOUD_NAME=CLOUD_NAME
-CLOUDINARY_API_KEY=YOUR_KEY
-CLOUDINARY_API_SECRET=YOUR_API_SECRET
+- PORT=8000
+- MONGO_URI=mongodb+srv://your_mongo_connection_string
+- JWT_SECRET=your_secret_key
+- CLOUDINARY_CLOUD_NAME=CLOUD_NAME
+- CLOUDINARY_API_KEY=YOUR_KEY
+- CLOUDINARY_API_SECRET=YOUR_API_SECRET
 
 ## **4️⃣ Start the Backend Server**
 npm Start
 
 ## **Folder Structure**
+```sh
 server/
 │── controllers/   # Route handlers
 │── models/        # Mongoose models
@@ -46,3 +47,4 @@ server/
 │── .env           # Environment variables
 │── package.json   # Dependencies & scripts
 │── vercel.json    # Routes redirection 
+```

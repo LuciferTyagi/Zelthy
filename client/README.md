@@ -25,13 +25,14 @@ cd   Zelthy
 ```
 
 ### **2️⃣ Install Dependencies**
-npm install
+- npm install
 
 ### **4️⃣ Start the Frontend**
-npm run dev
+- npm run dev
 
 
 ###  Folder Structure**
+```sh
 client/
 │── public/images           # Contains static assets like images
 │── src/
@@ -53,3 +54,4 @@ client/
 │   ├── Utils/        # Utility functions/constants
 │── package.json
 │── README.md
+```
