@@ -4,7 +4,7 @@ import { navLinks, slotPageNavLinks } from '../../Utils/Constant';
 import ThemeToggle from '../ThemeToggle';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faX } from '@fortawesome/free-solid-svg-icons';
-
+import {motion} from "Framer-motion"
 const Header = ({ setActiveTab }) => {
 const[showMobileMenu , setShowMobileMenu] = useState(false);
 const location = useLocation();
@@ -22,7 +22,7 @@ const buttonPath = isSignUpPage ? "/log-in" : "/sign-up";
                   {!isSignUpPage && ( 
                   <ul className='flex gap-5 text-zinc-800 dark:text-white text-base font-semibold'>
                       {navLinks.map((link) => (
-                        <li onClick={() => setActiveTab(link.name)} key={link.name}> <a href={link.path}>{link.name}</a></li>
+                        <motion.li whileHover={{scale:1.2}} onClick={() => setActiveTab(link.name)} key={link.name}> <a  href={link.path}>{link.name}</a></motion.li>
                       ))}
                   </ul>
                   )}
