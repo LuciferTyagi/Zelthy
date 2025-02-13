@@ -1,11 +1,11 @@
 import React, { useState , useEffect } from 'react'
 import Dashboard from './Dashboard'
-import AllUser from '../AllUser'
+import AllUser from './AllUser'
 import Availablity from '../AvailablityPage/Availablity'
 import Footer from "../Footer"
 import SlotPageHeader from './SlotPageHeader';
-import EditProfile from '../EditProfile';
-import Documentation from '../Documentation';
+import EditProfile from './EditProfile';
+import Documentation from './Documentation';
 import SlotPageSidebar from './SlotPageSidebar';
 import { useDispatch } from "react-redux";
 import { fetchAvailability, fetchUserProfile } from "../../Redux/Slices/UserSlice";
