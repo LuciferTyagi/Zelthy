@@ -12,9 +12,7 @@ const EditProfile = () => {
   const [selectedFile, setSelectedFile] = useState(null);
 
 
-  useEffect(() => {
-    dispatch(fetchUserProfile());
-  }, [dispatch]);
+ 
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);

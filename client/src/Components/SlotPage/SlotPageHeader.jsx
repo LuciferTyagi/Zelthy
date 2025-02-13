@@ -14,11 +14,8 @@ const navigate = useNavigate();
 
 const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/log-in");
+    window.location.href = "/log-in";
   };
-const profileImageSrc = profilePicture.startsWith("http")
-? profilePicture
-: `${BASE_URL}${profilePicture}`;
   return (
     <header style={{boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px"}} className='bg-white dark:bg-black w-full font-[inter] border-b border-white/20'>
             <nav className='relative  w-full mx-auto max-w-[1440px]  flex justify-between items-center py-4 px-2'>
