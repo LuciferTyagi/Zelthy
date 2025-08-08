@@ -1,34 +1,74 @@
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import moment from 'moment-timezone';
-import React from 'react'
+// src/components/TimeZone.jsx
+
+import React, { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import moment from 'moment-timezone';
+import { Autocomplete, TextField, Popper, Paper } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
-const TimeZone = ({showDropdown , setShowDropdown , handleTimezoneChange}) => {
-const { timezone } = useSelector((state) => state.user);
-const timezones = moment.tz.names();
+// Custom Popper to adjust z-index and dark mode styling
+const StyledPopper = styled(Popper)(({ theme }) => ({
+  zIndex: 1300,
+  '& .MuiPaper-root': {
+    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.text.primary,
+  },
+}));
+
+const TimeZone = ({ handleTimezoneChange }) => {
+  const { timezone } = useSelector((state) => state.user);
+  const zones = useMemo(() => moment.tz.names(), []);
+
   return (
-    <div>
-    <div className="flex gap-3 items-center justify-center w-fit text-xs lg:text-sm text-blue-500 cursor-pointer" onClick={() => setShowDropdown(!showDropdown)}>
-    <p>{timezone.replace("_", " ")}</p>
-    <FontAwesomeIcon icon={faAngleDown} />
-  </div>
+    <Autocomplete
+      options={zones}
+      value={timezone}
+      onChange={(e, newValue) => {
+        if (newValue) handleTimezoneChange(newValue);
+      }}
+      disableClearable
+      PopperComponent={StyledPopper}
+      PaperComponent={Paper}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          variant="outlined"
+          size="small"
+          // label="Time Zone"
+          InputProps={{
+            ...params.InputProps,
+            sx: {
+              backgroundColor: 'background.paper',
+              color: 'text.primary',
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'divider',
+              },
+              '&:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'primary.main',
+              },
+            },
+          }}
+        />
+      )}
+      getOptionLabel={(opt) => opt.replace('_', ' ')}
+      filterOptions={(opts, state) =>
+        opts.filter((tz) =>
+          tz.toLowerCase().includes(state.inputValue.toLowerCase())
+        )
+      }
+      renderOption={(props, option) => (
+        <li {...props} key={option} className="whitespace-nowrap">
+          {option.replace('_', ' ')}
+        </li>
+      )}
+      sx={{
+        width: 240,
+        '& .MuiInputLabel-root': {
+          color: 'text.secondary',
+        },
+      }}
+    />
+  );
+};
 
-  {showDropdown && (
-    <div className="absolute bg-white dark:bg-gray-800 shadow-lg p-2 w-60 max-h-60 overflow-y-auto rounded-md">
-      {timezones.map((tz) => (
-        <p
-          key={tz}
-          className="px-2 py-1 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700"
-          onClick={() => handleTimezoneChange(tz)} 
-        >
-          {tz.replace("_", " ")}
-        </p>
-      ))}
-    </div>
-  )}
-  </div>
-  )
-}
-
-export default TimeZone
+export default TimeZone;

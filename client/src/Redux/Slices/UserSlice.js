@@ -18,8 +18,8 @@ export const fetchAvailability = createAsyncThunk(
       });
       
       return {
-        availability: response.data.availability || defaultAvailability,
-        timezone: response.data.timezone || "Asia/Kolkata",
+        availability: response?.data?.availability || defaultAvailability,
+        timezone: response?.data?.timezone || "Asia/Kolkata",
       };
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to fetch availability");

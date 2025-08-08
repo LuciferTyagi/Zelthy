@@ -9,6 +9,7 @@ import Documentation from './Documentation';
 import SlotPageSidebar from './SlotPageSidebar';
 import { useDispatch } from "react-redux";
 import { fetchAvailability, fetchUserProfile } from "../../Redux/Slices/UserSlice";
+import UnderDevelopment from './UnderDevelopment'
 const SlotPage = () => {
 const[tabSelected , setTabSelected] = useState("Documentation")
 const dispatch = useDispatch();
@@ -21,7 +22,12 @@ const components = {
   "All Users": <AllUser />,
   "Edit Profile": <EditProfile />,
   "Availability": <Availablity setTabSelected={setTabSelected}/>,
-  "Documentation": <Documentation/>
+  "Documentation": <Documentation/>,
+  "Upgrade Plan": <UnderDevelopment/>,
+  "Analytics": <UnderDevelopment/>,
+  "Admin center": <UnderDevelopment/>,
+  "Help": <UnderDevelopment/>
+
 }
   return (
     <section className='dark:bg-black w-full min-h-screen  font-[inter]'>
